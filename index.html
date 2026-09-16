@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7STARS - Breathtaking Logo Redesign</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="starfield"></div>
+        
+        <div class="logo-wrapper">
+            <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background glow -->
+                <defs>
+                    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                        <stop offset="70%" style="stop-color:#FFA500;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FF6B00;stop-opacity:0.8" />
+                    </radialGradient>
+                    
+                    <radialGradient id="waterGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#00D9FF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0066CC;stop-opacity:0.9" />
+                    </radialGradient>
+                    
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    
+                    <filter id="innerShadow">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                        <feOffset dx="2" dy="2" result="offsetblur"/>
+                        <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.3"/>
+                        </feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                
+                <!-- Outer aura rings -->
+                <circle cx="150" cy="150" r="135" fill="none" stroke="#00D9FF" stroke-width="2" opacity="0.3" class="aura-ring-1"/>
+                <circle cx="150" cy="150" r="125" fill="none" stroke="#00D9FF" stroke-width="1" opacity="0.2" class="aura-ring-2"/>
+                
+                <!-- Main star shape (rotated diamond with curved points) -->
+                <g class="star-main" filter="url(#glow)">
+                    <!-- Water base layer -->
+                    <path d="M 150 80 Q 180 115 190 150 Q 180 185 150 220 Q 120 185 110 150 Q 120 115 150 80 Z" 
+                          fill="url(#waterGradient)" stroke="#0066CC" stroke-width="2"/>
+                    
+                    <!-- Sun center with corona -->
+                    <circle cx="150" cy="150" r="45" fill="url(#sunGradient)" stroke="#FF8C00" stroke-width="2"/>
+                    <circle cx="150" cy="150" r="50" fill="none" stroke="#FFD700" stroke-width="1" opacity="0.5" class="sun-corona"/>
+                    
+                    <!-- Sun highlight/shine -->
+                    <ellipse cx="140" cy="135" rx="15" ry="18" fill="#FFFF00" opacity="0.6" class="sun-shine"/>
+                </g>
+                
+                <!-- Left water wave -->
+                <path d="M 110 150 Q 95 140 85 150 Q 95 160 110 150" 
+                      fill="url(#waterGradient)" stroke="#00D9FF" stroke-width="2" filter="url(#glow)"/>
+                
+                <!-- Right water wave -->
+                <path d="M 190 150 Q 205 140 215 150 Q 205 160 190 150" 
+                      fill="url(#waterGradient)" stroke="#00D9FF" stroke-width="2" filter="url(#glow)"/>
+                
+                <!-- Top leaf accent -->
+                <g class="leaf" transform="translate(155, 90) rotate(-45)">
+                    <path d="M 0 0 Q 8 -5 10 -15 Q 8 -5 0 -8 Z" 
+                          fill="#00DD00" stroke="#00AA00" stroke-width="1"/>
+                    <path d="M 2 -3 Q 4 -6 5 -10" stroke="#00DD00" stroke-width="0.5" fill="none"/>
+                </g>
+                
+                <!-- Particles/bubbles around -->
+                <circle cx="85" cy="120" r="3" fill="#00D9FF" opacity="0.6" class="bubble bubble-1"/>
+                <circle cx="220" cy="140" r="2.5" fill="#00D9FF" opacity="0.5" class="bubble bubble-2"/>
+                <circle cx="95" cy="180" r="2" fill="#00D9FF" opacity="0.4" class="bubble bubble-3"/>
+                <circle cx="210" cy="170" r="2.5" fill="#00D9FF" opacity="0.5" class="bubble bubble-4"/>
+                <circle cx="150" cy="80" r="1.5" fill="#FFD700" opacity="0.6" class="particle particle-1"/>
+                <circle cx="150" cy="220" r="1.5" fill="#00D9FF" opacity="0.5" class="particle particle-2"/>
+            </svg>
+            
+            <!-- Text below logo -->
+            <div class="text-container">
+                <h1 class="main-text">7STARS</h1>
+                <p class="sub-text">Sun and Water</p>
+            </div>
+        </div>
+        
+        <!-- Interactive info -->
+        <div class="info">
+            <p>✨ Hover over the logo for interaction ✨</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
