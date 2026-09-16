@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a1e3e 0%, #0d2e5c 50%, #1a4d7a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Starfield background */
+.starfield {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 60% 70%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50% 50%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 80% 10%, #f0f, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90% 60%, #0ff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 30% 80%, #f0f, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 10% 90%, #0ff, rgba(0,0,0,0));
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    opacity: 0.5;
+    animation: twinkle 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.logo-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo-svg {
+    width: 350px;
+    height: 350px;
+    filter: drop-shadow(0 0 30px rgba(0, 217, 255, 0.5));
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-svg:hover {
+    filter: drop-shadow(0 0 60px rgba(0, 217, 255, 0.8)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    transform: scale(1.05);
+}
+
+/* Aura rings animation */
+.aura-ring-1 {
+    animation: pulse-ring-1 4s ease-in-out infinite;
+}
+
+.aura-ring-2 {
+    animation: pulse-ring-2 5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring-1 {
+    0%, 100% {
+        stroke-width: 2;
+        opacity: 0.3;
+    }
+    50% {
+        stroke-width: 3;
+        opacity: 0.6;
+    }
+}
+
+@keyframes pulse-ring-2 {
+    0%, 100% {
+        stroke-width: 1;
+        opacity: 0.2;
+    }
+    50% {
+        stroke-width: 2;
+        opacity: 0.5;
+    }
+}
+
+/* Star main animation */
+.star-main {
+    animation: star-float 6s ease-in-out infinite;
+}
+
+@keyframes star-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+/* Sun corona */
+.sun-corona {
+    animation: sun-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+    0%, 100% {
+        stroke-width: 1;
+        r: 50;
+        opacity: 0.5;
+    }
+    50% {
+        stroke-width: 2;
+        r: 56;
+        opacity: 0.8;
+    }
+}
+
+/* Sun shine reflection */
+.sun-shine {
+    animation: shine-flicker 3s ease-in-out infinite;
+}
+
+@keyframes shine-flicker {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+/* Leaf animation */
+.leaf {
+    animation: leaf-sway 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes leaf-sway {
+    0%, 100% {
+        transform: translate(155px, 90px) rotate(-45deg) rotateZ(0deg);
+    }
+    25% {
+        transform: translate(155px, 90px) rotate(-45deg) rotateZ(10deg);
+    }
+    75% {
+        transform: translate(155px, 90px) rotate(-45deg) rotateZ(-10deg);
+    }
+}
+
+/* Bubble animations */
+.bubble {
+    animation: float-up 4s ease-in infinite;
+}
+
+.bubble-1 {
+    animation-delay: 0s;
+    animation-duration: 5s;
+}
+
+.bubble-2 {
+    animation-delay: 0.5s;
+    animation-duration: 6s;
+}
+
+.bubble-3 {
+    animation-delay: 1s;
+    animation-duration: 5.5s;
+}
+
+.bubble-4 {
+    animation-delay: 1.5s;
+    animation-duration: 6.5s;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-60px) translateX(10px);
+        opacity: 0;
+    }
+}
+
+/* Particle animations */
+.particle {
+    animation: float-twinkle 3s ease-in-out infinite;
+}
+
+.particle-1 {
+    animation-delay: 0s;
+}
+
+.particle-2 {
+    animation-delay: 1.5s;
+}
+
+@keyframes float-twinkle {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Text styling */
+.text-container {
+    text-align: center;
+    animation: fade-in-up 1.5s ease-out;
+}
+
+.main-text {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00D9FF 0%, #FFD700 50%, #00D9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    margin-bottom: 10px;
+    animation: glow-text 3s ease-in-out infinite;
+}
+
+.sub-text {
+    font-size: 1.2rem;
+    color: #00D9FF;
+    letter-spacing: 2px;
+    font-weight: 300;
+    opacity: 0.8;
+    animation: fade-in-up 2s ease-out;
+}
+
+@keyframes glow-text {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(0, 217, 255, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Info section */
+.info {
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    color: #00D9FF;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: pulse-text 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-text {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .logo-svg {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .main-text {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .sub-text {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .logo-wrapper {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-svg {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .main-text {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+    
+    .sub-text {
+        font-size: 0.8rem;
+    }
+}
